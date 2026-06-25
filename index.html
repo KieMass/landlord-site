@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Harlow Properties — Rentals You'll Love Coming Home To</title>
+  <title>Massiah Properties — Providence Gardens, Guyana</title>
   <link rel="stylesheet" href="style.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -11,12 +11,125 @@
 </head>
 <body>
 
-  <!-- NAV -->
+  <!-- ══ LOGIN MODAL ══════════════════════════════════════════ -->
+  <div class="modal-backdrop" id="loginBackdrop" role="dialog" aria-modal="true" aria-label="Login">
+    <div class="modal">
+      <button class="modal-close" id="modalClose" aria-label="Close">&times;</button>
+      <div class="modal-logo">
+        <span class="logo-mark">M</span>
+        <span class="logo-text">Massiah<em>Properties</em></span>
+      </div>
+
+      <!-- Login Form -->
+      <div class="modal-panel" id="panelLogin">
+        <h2 class="modal-title">Welcome back</h2>
+        <p class="modal-sub">Sign in to manage your tenancy or saved listings.</p>
+        <div class="modal-form">
+          <div class="form-group">
+            <label for="loginEmail">Email Address</label>
+            <input type="email" id="loginEmail" placeholder="you@email.com" autocomplete="email" />
+            <span class="form-error" id="loginEmailErr"></span>
+          </div>
+          <div class="form-group">
+            <label for="loginPassword">Password</label>
+            <div class="input-password-wrap">
+              <input type="password" id="loginPassword" placeholder="••••••••" autocomplete="current-password" />
+              <button type="button" class="toggle-pw" data-target="loginPassword">Show</button>
+            </div>
+            <span class="form-error" id="loginPasswordErr"></span>
+          </div>
+          <div class="modal-row-between">
+            <label class="checkbox-label">
+              <input type="checkbox" id="rememberMe" /> Remember me
+            </label>
+            <button type="button" class="link-btn" id="goForgot">Forgot password?</button>
+          </div>
+          <button class="btn btn-primary btn-full" id="loginSubmit">Sign In</button>
+          <div class="modal-divider"><span>or</span></div>
+          <p class="modal-switch">Don't have an account? <button type="button" class="link-btn" id="goRegister">Create one</button></p>
+        </div>
+      </div>
+
+      <!-- Register Form -->
+      <div class="modal-panel hidden" id="panelRegister">
+        <h2 class="modal-title">Create an account</h2>
+        <p class="modal-sub">Join to enquire about properties and track your applications.</p>
+        <div class="modal-form">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="regFirst">First Name</label>
+              <input type="text" id="regFirst" placeholder="Keisha" />
+              <span class="form-error" id="regFirstErr"></span>
+            </div>
+            <div class="form-group">
+              <label for="regLast">Last Name</label>
+              <input type="text" id="regLast" placeholder="Massiah" />
+              <span class="form-error" id="regLastErr"></span>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="regEmail">Email Address</label>
+            <input type="email" id="regEmail" placeholder="you@email.com" autocomplete="email" />
+            <span class="form-error" id="regEmailErr"></span>
+          </div>
+          <div class="form-group">
+            <label for="regPhone">Phone (optional)</label>
+            <input type="tel" id="regPhone" placeholder="+592 600 0000" />
+          </div>
+          <div class="form-group">
+            <label for="regPassword">Password</label>
+            <div class="input-password-wrap">
+              <input type="password" id="regPassword" placeholder="Min. 8 characters" autocomplete="new-password" />
+              <button type="button" class="toggle-pw" data-target="regPassword">Show</button>
+            </div>
+            <span class="form-error" id="regPasswordErr"></span>
+          </div>
+          <button class="btn btn-primary btn-full" id="registerSubmit">Create Account</button>
+          <p class="modal-switch">Already have an account? <button type="button" class="link-btn" id="goLogin">Sign in</button></p>
+        </div>
+      </div>
+
+      <!-- Forgot Password -->
+      <div class="modal-panel hidden" id="panelForgot">
+        <h2 class="modal-title">Reset your password</h2>
+        <p class="modal-sub">Enter your email and we'll send a reset link to your inbox.</p>
+        <div class="modal-form">
+          <div class="form-group">
+            <label for="forgotEmail">Email Address</label>
+            <input type="email" id="forgotEmail" placeholder="you@email.com" />
+            <span class="form-error" id="forgotEmailErr"></span>
+          </div>
+          <button class="btn btn-primary btn-full" id="forgotSubmit">Send Reset Link</button>
+          <div class="form-success hidden" id="forgotSuccess">
+            <span>✓</span> Check your inbox — a reset link is on its way.
+          </div>
+          <p class="modal-switch"><button type="button" class="link-btn" id="backToLogin">← Back to Sign In</button></p>
+        </div>
+      </div>
+
+      <!-- Logged In State -->
+      <div class="modal-panel hidden" id="panelDashboard">
+        <div class="dashboard-avatar" id="dashAvatar">K</div>
+        <h2 class="modal-title" id="dashGreeting">Welcome back, Keisha!</h2>
+        <p class="modal-sub">You're signed in to your Massiah Properties account.</p>
+        <div class="dash-links">
+          <a href="#listings" class="dash-link" id="dashBrowse">🏠 Browse Listings</a>
+          <a href="#contact" class="dash-link" id="dashContact">✉️ Submit an Enquiry</a>
+          <div class="dash-link disabled">📄 My Applications <span class="badge-soon">Coming soon</span></div>
+          <div class="dash-link disabled">💳 Rent Payments <span class="badge-soon">Coming soon</span></div>
+        </div>
+        <button class="btn btn-outline btn-full" id="logoutBtn" style="margin-top:1.5rem;">Sign Out</button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ══ NAV ══════════════════════════════════════════════════ -->
   <header class="nav-wrapper" id="navbar">
     <nav class="nav-inner">
       <a href="#" class="nav-logo">
-        <span class="logo-mark">H</span>
-        <span class="logo-text">Harlow<em>Properties</em></span>
+        <span class="logo-mark">M</span>
+        <span class="logo-text">Massiah<em>Properties</em></span>
       </a>
       <button class="nav-toggle" id="navToggle" aria-label="Open menu">
         <span></span><span></span><span></span>
@@ -25,34 +138,41 @@
         <li><a href="#listings">Listings</a></li>
         <li><a href="#about">About</a></li>
         <li><a href="#amenities">Amenities</a></li>
-        <li><a href="#contact" class="nav-cta">Get in Touch</a></li>
+        <li><a href="#contact">Get in Touch</a></li>
+        <li>
+          <button class="nav-login-btn" id="navLoginBtn">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="5"/><path d="M3 21v-1a9 9 0 0 1 18 0v1"/></svg>
+            <span id="navLoginLabel">Sign In</span>
+          </button>
+        </li>
       </ul>
     </nav>
   </header>
 
-  <!-- HERO -->
+  <!-- ══ HERO ════════════════════════════════════════════════ -->
   <section class="hero" id="home">
     <div class="hero-bg">
       <div class="hero-overlay"></div>
       <div class="hero-grid-lines"></div>
     </div>
     <div class="hero-content">
-      <span class="hero-eyebrow">Curated Rentals · Georgetown, KY</span>
+      <span class="hero-eyebrow">Premium Rentals · Providence Gardens, Guyana</span>
       <h1 class="hero-headline">
-        Find a home that<br />
-        <em>actually</em> feels like one.
+        Your home in<br />
+        <em>Providence Gardens</em><br />
+        awaits.
       </h1>
-      <p class="hero-sub">Thoughtfully managed properties, responsive landlords, and leases that make sense. No surprises, no runaround.</p>
+      <p class="hero-sub">Massiah Properties offers well-maintained, professionally managed homes in one of Guyana's most sought-after residential communities. Honest leases, responsive service.</p>
       <div class="hero-actions">
         <a href="#listings" class="btn btn-primary">Browse Available Units</a>
-        <a href="#contact" class="btn btn-ghost">Schedule a Tour</a>
+        <button class="btn btn-ghost" id="heroLoginBtn">Sign In / Register</button>
       </div>
       <div class="hero-stats">
-        <div class="stat"><strong>24</strong><span>Units Available</span></div>
+        <div class="stat"><strong>18</strong><span>Units Available</span></div>
         <div class="stat-divider"></div>
-        <div class="stat"><strong>98%</strong><span>Tenant Satisfaction</span></div>
+        <div class="stat"><strong>96%</strong><span>Tenant Satisfaction</span></div>
         <div class="stat-divider"></div>
-        <div class="stat"><strong>12 yr</strong><span>Managing Properties</span></div>
+        <div class="stat"><strong>15 yr</strong><span>Serving Guyana</span></div>
       </div>
     </div>
     <div class="hero-scroll-hint">
@@ -61,13 +181,13 @@
     </div>
   </section>
 
-  <!-- LISTINGS -->
+  <!-- ══ LISTINGS ════════════════════════════════════════════ -->
   <section class="listings-section" id="listings">
     <div class="container">
       <div class="section-header">
         <span class="section-eyebrow">Available Now</span>
         <h2 class="section-title">Current Listings</h2>
-        <p class="section-sub">All units are professionally maintained and move-in ready. Pets considered on a case-by-case basis.</p>
+        <p class="section-sub">All properties are professionally maintained and move-in ready. Located within Providence Gardens, East Bank Demerara.</p>
       </div>
 
       <div class="filter-bar">
@@ -82,21 +202,21 @@
 
         <article class="listing-card" data-type="2br">
           <div class="card-image">
-            <img src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=600&q=80" alt="Maple Street Apartment" loading="lazy" />
+            <img src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=600&q=80" alt="Providence Gardens Apartment" loading="lazy" />
             <span class="card-badge available">Available Now</span>
             <span class="card-type">2 BR · 2 BA</span>
           </div>
           <div class="card-body">
             <div class="card-top">
-              <h3 class="card-title">Maple Street Apartment</h3>
-              <span class="card-price">$1,450<em>/mo</em></span>
+              <h3 class="card-title">Providence Gardens Apt.</h3>
+              <span class="card-price">G$180,000<em>/mo</em></span>
             </div>
-            <p class="card-address">218 Maple St, Georgetown, KY 40324</p>
+            <p class="card-address">Lot 12, Providence Gardens, EBD</p>
             <ul class="card-features">
               <li>1,050 sq ft</li>
               <li>In-unit laundry</li>
               <li>Private patio</li>
-              <li>1 parking spot</li>
+              <li>1 covered parking</li>
             </ul>
             <a href="#contact" class="btn btn-outline">Request a Tour</a>
           </div>
@@ -104,16 +224,16 @@
 
         <article class="listing-card" data-type="1br">
           <div class="card-image">
-            <img src="https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=600&q=80" alt="Elm Court Unit 4" loading="lazy" />
+            <img src="https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=600&q=80" alt="Garden View Unit" loading="lazy" />
             <span class="card-badge available">Available Now</span>
             <span class="card-type">1 BR · 1 BA</span>
           </div>
           <div class="card-body">
             <div class="card-top">
-              <h3 class="card-title">Elm Court, Unit 4</h3>
-              <span class="card-price">$925<em>/mo</em></span>
+              <h3 class="card-title">Garden View Unit</h3>
+              <span class="card-price">G$110,000<em>/mo</em></span>
             </div>
-            <p class="card-address">14 Elm Ct, Georgetown, KY 40324</p>
+            <p class="card-address">Lot 4, Providence Gardens, EBD</p>
             <ul class="card-features">
               <li>720 sq ft</li>
               <li>Updated kitchen</li>
@@ -126,21 +246,21 @@
 
         <article class="listing-card featured" data-type="3br">
           <div class="card-image">
-            <img src="https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=600&q=80" alt="Sycamore House" loading="lazy" />
+            <img src="https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=600&q=80" alt="Massiah Executive Home" loading="lazy" />
             <span class="card-badge featured-badge">Featured</span>
             <span class="card-type">3 BR · 2 BA</span>
           </div>
           <div class="card-body">
             <div class="card-top">
-              <h3 class="card-title">Sycamore House</h3>
-              <span class="card-price">$1,875<em>/mo</em></span>
+              <h3 class="card-title">Massiah Executive Home</h3>
+              <span class="card-price">G$280,000<em>/mo</em></span>
             </div>
-            <p class="card-address">67 Sycamore Ln, Georgetown, KY 40324</p>
+            <p class="card-address">Lot 67, Providence Gardens, EBD</p>
             <ul class="card-features">
               <li>1,600 sq ft</li>
-              <li>Attached garage</li>
-              <li>Fenced backyard</li>
-              <li>Central A/C</li>
+              <li>Garage & carport</li>
+              <li>Fenced compound</li>
+              <li>Generator hookup</li>
             </ul>
             <a href="#contact" class="btn btn-outline">Request a Tour</a>
           </div>
@@ -148,21 +268,21 @@
 
         <article class="listing-card" data-type="studio">
           <div class="card-image">
-            <img src="https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=600&q=80" alt="Park View Studio" loading="lazy" />
+            <img src="https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=600&q=80" alt="Providence Studio Flat" loading="lazy" />
             <span class="card-badge available">Available Now</span>
             <span class="card-type">Studio · 1 BA</span>
           </div>
           <div class="card-body">
             <div class="card-top">
-              <h3 class="card-title">Park View Studio</h3>
-              <span class="card-price">$695<em>/mo</em></span>
+              <h3 class="card-title">Providence Studio Flat</h3>
+              <span class="card-price">G$75,000<em>/mo</em></span>
             </div>
-            <p class="card-address">5 Riverside Dr, Georgetown, KY 40324</p>
+            <p class="card-address">Lot 5, Providence Gardens, EBD</p>
             <ul class="card-features">
               <li>480 sq ft</li>
-              <li>City park views</li>
-              <li>All utilities incl.</li>
-              <li>Bike storage</li>
+              <li>Garden views</li>
+              <li>Utilities included</li>
+              <li>Secure compound</li>
             </ul>
             <a href="#contact" class="btn btn-outline">Request a Tour</a>
           </div>
@@ -170,19 +290,19 @@
 
         <article class="listing-card" data-type="2br">
           <div class="card-image">
-            <img src="https://images.unsplash.com/photo-1493809842364-78817add7ffb?w=600&q=80" alt="Birchwood Place" loading="lazy" />
+            <img src="https://images.unsplash.com/photo-1493809842364-78817add7ffb?w=600&q=80" alt="Demerara Terrace" loading="lazy" />
             <span class="card-badge soon">Available Aug 1</span>
             <span class="card-type">2 BR · 1 BA</span>
           </div>
           <div class="card-body">
             <div class="card-top">
-              <h3 class="card-title">Birchwood Place</h3>
-              <span class="card-price">$1,195<em>/mo</em></span>
+              <h3 class="card-title">Demerara Terrace</h3>
+              <span class="card-price">G$145,000<em>/mo</em></span>
             </div>
-            <p class="card-address">331 Birchwood Ave, Georgetown, KY 40324</p>
+            <p class="card-address">Lot 33, Providence Gardens, EBD</p>
             <ul class="card-features">
               <li>890 sq ft</li>
-              <li>Dishwasher</li>
+              <li>Modern kitchen</li>
               <li>Community pool</li>
               <li>2 parking spots</li>
             </ul>
@@ -192,20 +312,20 @@
 
         <article class="listing-card" data-type="1br">
           <div class="card-image">
-            <img src="https://images.unsplash.com/photo-1616137466211-f939a420be84?w=600&q=80" alt="The Granary Loft" loading="lazy" />
+            <img src="https://images.unsplash.com/photo-1616137466211-f939a420be84?w=600&q=80" alt="Essequibo Loft" loading="lazy" />
             <span class="card-badge available">Available Now</span>
             <span class="card-type">1 BR · 1 BA</span>
           </div>
           <div class="card-body">
             <div class="card-top">
-              <h3 class="card-title">The Granary Loft</h3>
-              <span class="card-price">$1,075<em>/mo</em></span>
+              <h3 class="card-title">Essequibo Loft</h3>
+              <span class="card-price">G$125,000<em>/mo</em></span>
             </div>
-            <p class="card-address">9 Old Mill Rd, Georgetown, KY 40324</p>
+            <p class="card-address">Lot 9, Providence Gardens, EBD</p>
             <ul class="card-features">
               <li>810 sq ft</li>
-              <li>Exposed brick</li>
-              <li>10 ft ceilings</li>
+              <li>High ceilings</li>
+              <li>Natural ventilation</li>
               <li>Off-street parking</li>
             </ul>
             <a href="#contact" class="btn btn-outline">Request a Tour</a>
@@ -216,25 +336,25 @@
     </div>
   </section>
 
-  <!-- ABOUT -->
+  <!-- ══ ABOUT ════════════════════════════════════════════════ -->
   <section class="about-section" id="about">
     <div class="container about-grid">
       <div class="about-image-stack">
         <img class="about-img-main" src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=700&q=80" alt="Property manager" />
         <div class="about-card-float">
-          <strong>12 Years</strong>
-          <span>of trusted property management in Georgetown</span>
+          <strong>15 Years</strong>
+          <span>of trusted property management in Guyana</span>
         </div>
       </div>
       <div class="about-text">
         <span class="section-eyebrow">Who We Are</span>
         <h2 class="section-title">A landlord who actually answers their phone.</h2>
-        <p>Harlow Properties is a small, independent operation — not a faceless management company. We own and manage every property we rent, which means maintenance requests get handled within 24 hours and lease agreements don't hide fees in the fine print.</p>
+        <p>Massiah Properties is a family-owned operation rooted in Providence Gardens, East Bank Demerara. We own and manage every property we rent — which means maintenance requests are handled promptly and leases don't hide fees in the fine print.</p>
         <p>We believe good tenants deserve good landlords. That's the whole philosophy.</p>
         <ul class="about-list">
           <li>
             <div class="about-icon">✓</div>
-            <div><strong>24-hour maintenance response</strong><br/>Real problems, real solutions, same business day.</div>
+            <div><strong>Prompt maintenance response</strong><br/>Real problems, real solutions, handled same business day.</div>
           </li>
           <li>
             <div class="about-icon">✓</div>
@@ -249,7 +369,7 @@
     </div>
   </section>
 
-  <!-- AMENITIES -->
+  <!-- ══ AMENITIES ════════════════════════════════════════════ -->
   <section class="amenities-section" id="amenities">
     <div class="container">
       <div class="section-header">
@@ -259,61 +379,65 @@
       <div class="amenities-grid">
         <div class="amenity-item">
           <div class="amenity-icon">🔧</div>
-          <h4>24-hr Maintenance</h4>
-          <p>Submit a request anytime. We prioritize urgent issues around the clock.</p>
+          <h4>Prompt Maintenance</h4>
+          <p>Submit a request anytime. Urgent issues are prioritised and resolved quickly.</p>
         </div>
         <div class="amenity-item">
           <div class="amenity-icon">📱</div>
           <h4>Online Rent Payment</h4>
-          <p>Pay rent securely online. No checks, no hassle, auto-pay available.</p>
+          <p>Pay rent securely via bank transfer or mobile. Receipts issued automatically.</p>
         </div>
         <div class="amenity-item">
-          <div class="amenity-icon">🐾</div>
-          <h4>Pet-Friendly Options</h4>
-          <p>Several of our properties welcome pets with reasonable deposit terms.</p>
+          <div class="amenity-icon">⚡</div>
+          <h4>Generator Hookup</h4>
+          <p>Backup power provision available at select properties for uninterrupted living.</p>
         </div>
         <div class="amenity-item">
           <div class="amenity-icon">🅿️</div>
-          <h4>Off-Street Parking</h4>
-          <p>Dedicated parking included or available at most of our locations.</p>
+          <h4>Secure Parking</h4>
+          <p>Covered or off-street parking within a gated compound at most locations.</p>
         </div>
         <div class="amenity-item">
-          <div class="amenity-icon">❄️</div>
-          <h4>Central Climate Control</h4>
-          <p>Modern HVAC systems in all units, maintained and serviced annually.</p>
+          <div class="amenity-icon">🌿</div>
+          <h4>Landscaped Grounds</h4>
+          <p>Well-kept gardens and communal spaces maintained by our grounds team.</p>
         </div>
         <div class="amenity-item">
           <div class="amenity-icon">🔒</div>
-          <h4>Secure Entry</h4>
-          <p>Keypad or smart lock entry on all properties, rekeyed between tenants.</p>
+          <h4>Gated & Secure</h4>
+          <p>All properties sit within gated compounds with 24-hour security monitoring.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- CONTACT -->
+  <!-- ══ CONTACT ══════════════════════════════════════════════ -->
   <section class="contact-section" id="contact">
     <div class="container contact-grid">
       <div class="contact-info">
         <span class="section-eyebrow">Get in Touch</span>
         <h2 class="section-title">Let's find your next home.</h2>
-        <p>Whether you're ready to apply or just have questions, reach out. We respond to every inquiry within one business day.</p>
+        <p>Whether you're ready to apply or just have questions, reach out. We respond to every enquiry within one business day.</p>
         <div class="contact-details">
           <div class="contact-item">
             <span class="contact-label">Phone</span>
-            <a href="tel:+18595551234">(859) 555-1234</a>
+            <a href="tel:+5926000000">+592 600 0000</a>
+          </div>
+          <div class="contact-item">
+            <span class="contact-label">WhatsApp</span>
+            <a href="https://wa.me/5926000000" target="_blank" rel="noopener">+592 600 0000</a>
           </div>
           <div class="contact-item">
             <span class="contact-label">Email</span>
-            <a href="mailto:hello@harlowproperties.com">hello@harlowproperties.com</a>
+            <a href="mailto:info@massiahproperties.gy">info@massiahproperties.gy</a>
           </div>
           <div class="contact-item">
             <span class="contact-label">Office Hours</span>
-            <span>Mon–Fri 9am–6pm · Sat 10am–3pm</span>
+            <span>Mon–Fri 8am–5pm · Sat 9am–1pm</span>
           </div>
           <div class="contact-item">
-            <span class="contact-label">Address</span>
-            <span>114 Commerce St, Georgetown, KY 40324</span>
+            <span class="contact-label">Location</span>
+            <span>Providence Gardens, East Bank Demerara, Guyana</span>
           </div>
         </div>
       </div>
@@ -323,12 +447,12 @@
           <div class="form-row">
             <div class="form-group">
               <label for="name">Your Name</label>
-              <input type="text" id="name" name="name" placeholder="Jane Smith" required />
+              <input type="text" id="name" name="name" placeholder="Keisha Massiah" required />
               <span class="form-error" id="nameError"></span>
             </div>
             <div class="form-group">
               <label for="email">Email Address</label>
-              <input type="email" id="email" name="email" placeholder="jane@email.com" required />
+              <input type="email" id="email" name="email" placeholder="you@email.com" required />
               <span class="form-error" id="emailError"></span>
             </div>
           </div>
@@ -336,21 +460,21 @@
             <label for="interest">I'm interested in…</label>
             <select id="interest" name="interest">
               <option value="">Select a property or topic</option>
-              <option value="maple">Maple Street Apartment — $1,450/mo</option>
-              <option value="elm">Elm Court Unit 4 — $925/mo</option>
-              <option value="sycamore">Sycamore House — $1,875/mo</option>
-              <option value="park">Park View Studio — $695/mo</option>
-              <option value="birchwood">Birchwood Place — $1,195/mo</option>
-              <option value="granary">The Granary Loft — $1,075/mo</option>
-              <option value="general">General Inquiry</option>
+              <option value="pga">Providence Gardens Apt. — G$180,000/mo</option>
+              <option value="gvu">Garden View Unit — G$110,000/mo</option>
+              <option value="meh">Massiah Executive Home — G$280,000/mo</option>
+              <option value="psf">Providence Studio Flat — G$75,000/mo</option>
+              <option value="dt">Demerara Terrace — G$145,000/mo</option>
+              <option value="el">Essequibo Loft — G$125,000/mo</option>
+              <option value="general">General Enquiry</option>
             </select>
           </div>
           <div class="form-group">
             <label for="message">Message</label>
-            <textarea id="message" name="message" rows="5" placeholder="Tell us when you're looking to move, any questions you have, or which property caught your eye…" required></textarea>
+            <textarea id="message" name="message" rows="5" placeholder="Tell us when you're looking to move in, any questions you have, or which property caught your eye…" required></textarea>
             <span class="form-error" id="messageError"></span>
           </div>
-          <button type="submit" class="btn btn-primary btn-full">Send Message</button>
+          <button type="submit" class="btn btn-primary btn-full">Send Enquiry</button>
           <div class="form-success" id="formSuccess">
             <span>✓</span> Thanks! We'll be in touch within one business day.
           </div>
@@ -359,18 +483,19 @@
     </div>
   </section>
 
-  <!-- FOOTER -->
+  <!-- ══ FOOTER ════════════════════════════════════════════════ -->
   <footer class="footer">
     <div class="container footer-inner">
       <a href="#" class="nav-logo footer-logo">
-        <span class="logo-mark">H</span>
-        <span class="logo-text">Harlow<em>Properties</em></span>
+        <span class="logo-mark">M</span>
+        <span class="logo-text">Massiah<em>Properties</em></span>
       </a>
-      <p class="footer-copy">© 2025 Harlow Properties LLC · Georgetown, KY · All rights reserved.</p>
+      <p class="footer-copy">© 2025 Massiah Properties · Providence Gardens, Guyana · All rights reserved.</p>
       <nav class="footer-links">
         <a href="#listings">Listings</a>
         <a href="#about">About</a>
         <a href="#contact">Contact</a>
+        <button class="link-btn footer-login-link" id="footerLoginBtn">Sign In</button>
       </nav>
     </div>
   </footer>
