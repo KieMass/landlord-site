@@ -8,6 +8,272 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      font-size: 16px;
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      line-height: 1.5;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    .hero,
+    .listings-section,
+    .about-section,
+    .amenities-section,
+    .contact-section,
+    .footer {
+      padding-left: 1.5rem;
+      padding-right: 1.5rem;
+    }
+
+    .nav-inner,
+    .hero-actions,
+    .hero-stats,
+    .filter-bar,
+    .contact-details,
+    .dash-links,
+    .footer-inner {
+      gap: 1rem;
+    }
+
+    .hero-content,
+    .about-grid,
+    .contact-grid,
+    .listings-grid,
+    .amenities-grid,
+    .footer-inner {
+      width: 100%;
+    }
+
+    .listings-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1rem;
+    }
+
+    .about-grid,
+    .amenities-grid,
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+
+    .about-image-stack,
+    .about-text,
+    .contact-info,
+    .contact-form-wrap {
+      width: 100%;
+    }
+
+    .about-img-main,
+    .card-image img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .card-body {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .card-body a.btn {
+      margin-top: auto;
+    }
+
+    .section-header,
+    .contact-form-wrap,
+    .footer-inner {
+      max-width: 100%;
+    }
+
+    .footer-inner {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+
+    .footer-logo,
+    .footer-copy {
+      width: 100%;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.75rem;
+      width: 100%;
+    }
+
+    .hero-headline {
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      line-height: 1.05;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .modal {
+      width: min(100%, 560px);
+      margin: 1.5rem auto;
+    }
+
+    .modal-backdrop {
+      padding: 1rem;
+    }
+
+    .modal-form .form-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .form-row .form-group {
+      flex: 1 1 240px;
+      min-width: 0;
+    }
+
+    @media (max-width: 980px) {
+      .nav-toggle {
+        display: flex;
+      }
+
+      .nav-inner {
+        flex-wrap: wrap;
+        justify-content: space-between;
+      }
+
+      .nav-links {
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 0.75rem;
+      }
+
+      .nav-links li {
+        width: 100%;
+        text-align: center;
+      }
+
+      .hero {
+        padding-top: 3rem;
+        padding-bottom: 3rem;
+      }
+
+      .hero-stats {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .section-header,
+      .container,
+      .hero,
+      .footer,
+      .about-section,
+      .contact-section {
+        padding-left: 1rem;
+        padding-right: 1rem;
+      }
+
+      .hero-actions {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .hero-stats {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 0.75rem;
+      }
+
+      .filter-bar {
+        justify-content: center;
+      }
+
+      .modal {
+        padding: 1rem;
+      }
+
+      .hero-headline {
+        font-size: clamp(2rem, 8vw, 3rem);
+      }
+
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-inner {
+        align-items: center;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .hero-eyebrow,
+      .section-eyebrow,
+      .card-type,
+      .card-price,
+      .hero-sub,
+      .section-sub,
+      .contact-item span,
+      .contact-item a {
+        font-size: 0.95rem;
+      }
+
+      .hero-actions a,
+      .hero-actions button {
+        width: 100%;
+      }
+
+      .hero-stats {
+        display: grid;
+        grid-template-columns: 1fr;
+      }
+
+      .filter-bar {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .nav-links {
+        justify-content: center;
+      }
+
+      .about-list li {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .contact-details {
+        display: grid;
+        gap: 1rem;
+      }
+    }
+  </style>
 </head>
 <body>
 
