@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Listing Details | Massiah Properties</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <header class="nav-wrapper scrolled" id="navbar">
+    <nav class="nav-inner">
+      <a href="index.html" class="nav-logo">
+        <span class="logo-mark">M</span>
+        <span class="logo-text">Massiah<em>Properties</em></span>
+      </a>
+      <a href="index.html#listings" class="btn btn-outline nav-back-link">Back to Listings</a>
+    </nav>
+  </header>
+
+  <main class="listing-detail-page">
+    <section class="listing-detail-section">
+      <div class="container listing-detail-card">
+        <div class="listing-gallery" aria-label="Property image gallery">
+          <button class="carousel-btn prev" id="carouselPrev" type="button" aria-label="Previous image">&#10094;</button>
+          <img id="detailImage" src="" alt="Listing gallery" />
+          <button class="carousel-btn next" id="carouselNext" type="button" aria-label="Next image">&#10095;</button>
+          <div class="carousel-dots" id="carouselDots"></div>
+        </div>
+
+        <div class="listing-detail-content">
+          <p class="section-eyebrow" id="detailType">Featured Rental</p>
+          <h1 class="section-title" id="detailTitle">Loading listing…</h1>
+          <div class="detail-price" id="detailPrice"></div>
+          <p class="detail-address" id="detailAddress"></p>
+          <p class="detail-description" id="detailDescription"></p>
+          <ul class="detail-features" id="detailFeatures"></ul>
+          <div class="detail-actions">
+            <a href="index.html#contact" class="btn btn-primary">Request a Tour</a>
+            <a href="index.html#listings" class="btn btn-outline">Browse More Listings</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="listing-detail.js"></script>
+</body>
+</html>

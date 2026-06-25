@@ -70,10 +70,32 @@ document.addEventListener('DOMContentLoaded', () => {
   const SESSION_KEY = 'massiah_user';
 
   const getSession = () => {
-    try { return JSON.parse(localStorage.getItem(SESSION_KEY)); } catch { return null; }
+    const persisted = localStorage.getItem(SESSION_KEY);
+    if (persisted) {
+      try { return JSON.parse(persisted); } catch { }
+    }
+
+    const transient = sessionStorage.getItem(SESSION_KEY);
+    if (transient) {
+      try { return JSON.parse(transient); } catch { }
+    }
+
+    return null;
   };
-  const setSession = (user) => localStorage.setItem(SESSION_KEY, JSON.stringify(user));
-  const clearSession = () => localStorage.removeItem(SESSION_KEY);
+  const setSession = (user, remember = false) => {
+    const payload = JSON.stringify(user);
+    if (remember) {
+      localStorage.setItem(SESSION_KEY, payload);
+      sessionStorage.removeItem(SESSION_KEY);
+    } else {
+      sessionStorage.setItem(SESSION_KEY, payload);
+      localStorage.removeItem(SESSION_KEY);
+    }
+  };
+  const clearSession = () => {
+    localStorage.removeItem(SESSION_KEY);
+    sessionStorage.removeItem(SESSION_KEY);
+  };
 
   // Simple demo "user database" in localStorage
   const USERS_KEY = 'massiah_users';
@@ -171,7 +193,8 @@ document.addEventListener('DOMContentLoaded', () => {
       setErr('loginPasswordErr', 'Incorrect password.'); return;
     }
 
-    setSession({ email: user.email, firstName: user.firstName, lastName: user.lastName });
+    const rememberMe = document.getElementById('rememberMe').checked;
+    setSession({ email: user.email, firstName: user.firstName, lastName: user.lastName, phone: user.phone || '' }, rememberMe);
     refreshAuthUI();
     showPanel(panelDashboard);
     document.getElementById('loginEmail').value    = '';
@@ -190,7 +213,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const first = document.getElementById('regFirst').value.trim();
     const last  = document.getElementById('regLast').value.trim();
     const email = document.getElementById('regEmail').value.trim();
+    const phone = document.getElementById('regPhone').value.trim();
     const pw    = document.getElementById('regPassword').value;
+    const rememberMe = document.getElementById('regRememberMe')?.checked || false;
     let ok = true;
 
     clearErr('regFirstErr'); clearErr('regLastErr');
@@ -209,10 +234,10 @@ document.addEventListener('DOMContentLoaded', () => {
       setErr('regEmailErr', 'An account with this email already exists.'); return;
     }
 
-    users[email.toLowerCase()] = { email, firstName: first, lastName: last, password: pw };
+    users[email.toLowerCase()] = { email, firstName: first, lastName: last, phone, password: pw };
     saveUsers(users);
 
-    setSession({ email, firstName: first, lastName: last });
+    setSession({ email, firstName: first, lastName: last, phone }, rememberMe);
     refreshAuthUI();
     showPanel(panelDashboard);
 
