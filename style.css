@@ -610,6 +610,37 @@ a { text-decoration: none; color: inherit; }
 }
 .card-image img { transition: transform 0.5s ease; }
 .listing-card:hover .card-image img { transform: scale(1.05); }
+.card-image-link {
+  display: block;
+  height: 100%;
+}
+.card-image-link img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.card-image-overlay {
+  position: absolute;
+  left: 50%;
+  bottom: 1rem;
+  transform: translateX(-50%) translateY(8px);
+  background: rgba(26,31,46,0.82);
+  color: var(--white);
+  padding: 0.55rem 0.9rem;
+  border-radius: 999px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  opacity: 0;
+  transition: all var(--transition);
+  pointer-events: none;
+}
+.card-image-link:hover .card-image-overlay,
+.card-image-link:focus-visible .card-image-overlay {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
 .card-badge {
   position: absolute;
   top: 1rem;
