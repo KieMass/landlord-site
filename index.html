@@ -2,34 +2,379 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>My Rentals</title>
-  style.css
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Harlow Properties — Rentals You'll Love Coming Home To</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
 </head>
 <body>
 
-  <header>
-    <h1>My Rental Properties</h1>
-    <p>Quality homes available for rent</p>
+  <!-- NAV -->
+  <header class="nav-wrapper" id="navbar">
+    <nav class="nav-inner">
+      <a href="#" class="nav-logo">
+        <span class="logo-mark">H</span>
+        <span class="logo-text">Harlow<em>Properties</em></span>
+      </a>
+      <button class="nav-toggle" id="navToggle" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#listings">Listings</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#amenities">Amenities</a></li>
+        <li><a href="#contact" class="nav-cta">Get in Touch</a></li>
+      </ul>
+    </nav>
   </header>
 
-  <section class="properties">
-    <div class="card">
-      <h2>2 Bedroom Apartment</h2>
-      <p>Located in downtown. $1,200/month</p>
-      <button onclick="contact()">Contact</button>
+  <!-- HERO -->
+  <section class="hero" id="home">
+    <div class="hero-bg">
+      <div class="hero-overlay"></div>
+      <div class="hero-grid-lines"></div>
     </div>
-
-    <div class="card">
-      <h2>3 Bedroom House</h2>
-      <p>Suburbs. $1,800/month</p>
-      <button onclick="contact()">Contact</button>
+    <div class="hero-content">
+      <span class="hero-eyebrow">Curated Rentals · Georgetown, KY</span>
+      <h1 class="hero-headline">
+        Find a home that<br />
+        <em>actually</em> feels like one.
+      </h1>
+      <p class="hero-sub">Thoughtfully managed properties, responsive landlords, and leases that make sense. No surprises, no runaround.</p>
+      <div class="hero-actions">
+        <a href="#listings" class="btn btn-primary">Browse Available Units</a>
+        <a href="#contact" class="btn btn-ghost">Schedule a Tour</a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat"><strong>24</strong><span>Units Available</span></div>
+        <div class="stat-divider"></div>
+        <div class="stat"><strong>98%</strong><span>Tenant Satisfaction</span></div>
+        <div class="stat-divider"></div>
+        <div class="stat"><strong>12 yr</strong><span>Managing Properties</span></div>
+      </div>
+    </div>
+    <div class="hero-scroll-hint">
+      <span>Scroll to explore</span>
+      <div class="scroll-line"></div>
     </div>
   </section>
 
-  <footer>
-    <p>© 2026 My Rentals</p>
+  <!-- LISTINGS -->
+  <section class="listings-section" id="listings">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-eyebrow">Available Now</span>
+        <h2 class="section-title">Current Listings</h2>
+        <p class="section-sub">All units are professionally maintained and move-in ready. Pets considered on a case-by-case basis.</p>
+      </div>
+
+      <div class="filter-bar">
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="studio">Studio</button>
+        <button class="filter-btn" data-filter="1br">1 Bedroom</button>
+        <button class="filter-btn" data-filter="2br">2 Bedroom</button>
+        <button class="filter-btn" data-filter="3br">3 Bedroom</button>
+      </div>
+
+      <div class="listings-grid" id="listingsGrid">
+
+        <article class="listing-card" data-type="2br">
+          <div class="card-image">
+            <img src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=600&q=80" alt="Maple Street Apartment" loading="lazy" />
+            <span class="card-badge available">Available Now</span>
+            <span class="card-type">2 BR · 2 BA</span>
+          </div>
+          <div class="card-body">
+            <div class="card-top">
+              <h3 class="card-title">Maple Street Apartment</h3>
+              <span class="card-price">$1,450<em>/mo</em></span>
+            </div>
+            <p class="card-address">218 Maple St, Georgetown, KY 40324</p>
+            <ul class="card-features">
+              <li>1,050 sq ft</li>
+              <li>In-unit laundry</li>
+              <li>Private patio</li>
+              <li>1 parking spot</li>
+            </ul>
+            <a href="#contact" class="btn btn-outline">Request a Tour</a>
+          </div>
+        </article>
+
+        <article class="listing-card" data-type="1br">
+          <div class="card-image">
+            <img src="https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=600&q=80" alt="Elm Court Unit 4" loading="lazy" />
+            <span class="card-badge available">Available Now</span>
+            <span class="card-type">1 BR · 1 BA</span>
+          </div>
+          <div class="card-body">
+            <div class="card-top">
+              <h3 class="card-title">Elm Court, Unit 4</h3>
+              <span class="card-price">$925<em>/mo</em></span>
+            </div>
+            <p class="card-address">14 Elm Ct, Georgetown, KY 40324</p>
+            <ul class="card-features">
+              <li>720 sq ft</li>
+              <li>Updated kitchen</li>
+              <li>Walk-in closet</li>
+              <li>Street parking</li>
+            </ul>
+            <a href="#contact" class="btn btn-outline">Request a Tour</a>
+          </div>
+        </article>
+
+        <article class="listing-card featured" data-type="3br">
+          <div class="card-image">
+            <img src="https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=600&q=80" alt="Sycamore House" loading="lazy" />
+            <span class="card-badge featured-badge">Featured</span>
+            <span class="card-type">3 BR · 2 BA</span>
+          </div>
+          <div class="card-body">
+            <div class="card-top">
+              <h3 class="card-title">Sycamore House</h3>
+              <span class="card-price">$1,875<em>/mo</em></span>
+            </div>
+            <p class="card-address">67 Sycamore Ln, Georgetown, KY 40324</p>
+            <ul class="card-features">
+              <li>1,600 sq ft</li>
+              <li>Attached garage</li>
+              <li>Fenced backyard</li>
+              <li>Central A/C</li>
+            </ul>
+            <a href="#contact" class="btn btn-outline">Request a Tour</a>
+          </div>
+        </article>
+
+        <article class="listing-card" data-type="studio">
+          <div class="card-image">
+            <img src="https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=600&q=80" alt="Park View Studio" loading="lazy" />
+            <span class="card-badge available">Available Now</span>
+            <span class="card-type">Studio · 1 BA</span>
+          </div>
+          <div class="card-body">
+            <div class="card-top">
+              <h3 class="card-title">Park View Studio</h3>
+              <span class="card-price">$695<em>/mo</em></span>
+            </div>
+            <p class="card-address">5 Riverside Dr, Georgetown, KY 40324</p>
+            <ul class="card-features">
+              <li>480 sq ft</li>
+              <li>City park views</li>
+              <li>All utilities incl.</li>
+              <li>Bike storage</li>
+            </ul>
+            <a href="#contact" class="btn btn-outline">Request a Tour</a>
+          </div>
+        </article>
+
+        <article class="listing-card" data-type="2br">
+          <div class="card-image">
+            <img src="https://images.unsplash.com/photo-1493809842364-78817add7ffb?w=600&q=80" alt="Birchwood Place" loading="lazy" />
+            <span class="card-badge soon">Available Aug 1</span>
+            <span class="card-type">2 BR · 1 BA</span>
+          </div>
+          <div class="card-body">
+            <div class="card-top">
+              <h3 class="card-title">Birchwood Place</h3>
+              <span class="card-price">$1,195<em>/mo</em></span>
+            </div>
+            <p class="card-address">331 Birchwood Ave, Georgetown, KY 40324</p>
+            <ul class="card-features">
+              <li>890 sq ft</li>
+              <li>Dishwasher</li>
+              <li>Community pool</li>
+              <li>2 parking spots</li>
+            </ul>
+            <a href="#contact" class="btn btn-outline">Request a Tour</a>
+          </div>
+        </article>
+
+        <article class="listing-card" data-type="1br">
+          <div class="card-image">
+            <img src="https://images.unsplash.com/photo-1616137466211-f939a420be84?w=600&q=80" alt="The Granary Loft" loading="lazy" />
+            <span class="card-badge available">Available Now</span>
+            <span class="card-type">1 BR · 1 BA</span>
+          </div>
+          <div class="card-body">
+            <div class="card-top">
+              <h3 class="card-title">The Granary Loft</h3>
+              <span class="card-price">$1,075<em>/mo</em></span>
+            </div>
+            <p class="card-address">9 Old Mill Rd, Georgetown, KY 40324</p>
+            <ul class="card-features">
+              <li>810 sq ft</li>
+              <li>Exposed brick</li>
+              <li>10 ft ceilings</li>
+              <li>Off-street parking</li>
+            </ul>
+            <a href="#contact" class="btn btn-outline">Request a Tour</a>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="about-section" id="about">
+    <div class="container about-grid">
+      <div class="about-image-stack">
+        <img class="about-img-main" src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=700&q=80" alt="Property manager" />
+        <div class="about-card-float">
+          <strong>12 Years</strong>
+          <span>of trusted property management in Georgetown</span>
+        </div>
+      </div>
+      <div class="about-text">
+        <span class="section-eyebrow">Who We Are</span>
+        <h2 class="section-title">A landlord who actually answers their phone.</h2>
+        <p>Harlow Properties is a small, independent operation — not a faceless management company. We own and manage every property we rent, which means maintenance requests get handled within 24 hours and lease agreements don't hide fees in the fine print.</p>
+        <p>We believe good tenants deserve good landlords. That's the whole philosophy.</p>
+        <ul class="about-list">
+          <li>
+            <div class="about-icon">✓</div>
+            <div><strong>24-hour maintenance response</strong><br/>Real problems, real solutions, same business day.</div>
+          </li>
+          <li>
+            <div class="about-icon">✓</div>
+            <div><strong>Plain-language leases</strong><br/>You shouldn't need a lawyer to understand your rental agreement.</div>
+          </li>
+          <li>
+            <div class="about-icon">✓</div>
+            <div><strong>Flexible move-in dates</strong><br/>We work around your schedule, not just ours.</div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- AMENITIES -->
+  <section class="amenities-section" id="amenities">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-eyebrow">What's Included</span>
+        <h2 class="section-title">Standard across all properties</h2>
+      </div>
+      <div class="amenities-grid">
+        <div class="amenity-item">
+          <div class="amenity-icon">🔧</div>
+          <h4>24-hr Maintenance</h4>
+          <p>Submit a request anytime. We prioritize urgent issues around the clock.</p>
+        </div>
+        <div class="amenity-item">
+          <div class="amenity-icon">📱</div>
+          <h4>Online Rent Payment</h4>
+          <p>Pay rent securely online. No checks, no hassle, auto-pay available.</p>
+        </div>
+        <div class="amenity-item">
+          <div class="amenity-icon">🐾</div>
+          <h4>Pet-Friendly Options</h4>
+          <p>Several of our properties welcome pets with reasonable deposit terms.</p>
+        </div>
+        <div class="amenity-item">
+          <div class="amenity-icon">🅿️</div>
+          <h4>Off-Street Parking</h4>
+          <p>Dedicated parking included or available at most of our locations.</p>
+        </div>
+        <div class="amenity-item">
+          <div class="amenity-icon">❄️</div>
+          <h4>Central Climate Control</h4>
+          <p>Modern HVAC systems in all units, maintained and serviced annually.</p>
+        </div>
+        <div class="amenity-item">
+          <div class="amenity-icon">🔒</div>
+          <h4>Secure Entry</h4>
+          <p>Keypad or smart lock entry on all properties, rekeyed between tenants.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact-section" id="contact">
+    <div class="container contact-grid">
+      <div class="contact-info">
+        <span class="section-eyebrow">Get in Touch</span>
+        <h2 class="section-title">Let's find your next home.</h2>
+        <p>Whether you're ready to apply or just have questions, reach out. We respond to every inquiry within one business day.</p>
+        <div class="contact-details">
+          <div class="contact-item">
+            <span class="contact-label">Phone</span>
+            <a href="tel:+18595551234">(859) 555-1234</a>
+          </div>
+          <div class="contact-item">
+            <span class="contact-label">Email</span>
+            <a href="mailto:hello@harlowproperties.com">hello@harlowproperties.com</a>
+          </div>
+          <div class="contact-item">
+            <span class="contact-label">Office Hours</span>
+            <span>Mon–Fri 9am–6pm · Sat 10am–3pm</span>
+          </div>
+          <div class="contact-item">
+            <span class="contact-label">Address</span>
+            <span>114 Commerce St, Georgetown, KY 40324</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="contact-form-wrap">
+        <form class="contact-form" id="contactForm" novalidate>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="name">Your Name</label>
+              <input type="text" id="name" name="name" placeholder="Jane Smith" required />
+              <span class="form-error" id="nameError"></span>
+            </div>
+            <div class="form-group">
+              <label for="email">Email Address</label>
+              <input type="email" id="email" name="email" placeholder="jane@email.com" required />
+              <span class="form-error" id="emailError"></span>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="interest">I'm interested in…</label>
+            <select id="interest" name="interest">
+              <option value="">Select a property or topic</option>
+              <option value="maple">Maple Street Apartment — $1,450/mo</option>
+              <option value="elm">Elm Court Unit 4 — $925/mo</option>
+              <option value="sycamore">Sycamore House — $1,875/mo</option>
+              <option value="park">Park View Studio — $695/mo</option>
+              <option value="birchwood">Birchwood Place — $1,195/mo</option>
+              <option value="granary">The Granary Loft — $1,075/mo</option>
+              <option value="general">General Inquiry</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" rows="5" placeholder="Tell us when you're looking to move, any questions you have, or which property caught your eye…" required></textarea>
+            <span class="form-error" id="messageError"></span>
+          </div>
+          <button type="submit" class="btn btn-primary btn-full">Send Message</button>
+          <div class="form-success" id="formSuccess">
+            <span>✓</span> Thanks! We'll be in touch within one business day.
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container footer-inner">
+      <a href="#" class="nav-logo footer-logo">
+        <span class="logo-mark">H</span>
+        <span class="logo-text">Harlow<em>Properties</em></span>
+      </a>
+      <p class="footer-copy">© 2025 Harlow Properties LLC · Georgetown, KY · All rights reserved.</p>
+      <nav class="footer-links">
+        <a href="#listings">Listings</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
   </footer>
 
-  script.jsscript>
+  <script src="script.js"></script>
 </body>
 </html>
